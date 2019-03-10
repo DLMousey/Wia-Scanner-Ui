@@ -8,9 +8,12 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <StackPanel Orientation="Horizontal">
-            <Button Content="Initialise" Width="75" Click="Initialise_Click"/>
-            <Button Content="Connect" Width="75" Click="Connect_Click"/>
-            <Button Content="Scan" Width="75" Click="Scan_Click"/>
+            <StackPanel Orientation="Vertical" Width="120" Margin="5">
+                <Button Content="Initialise" HorizontalAlignment="Stretch" Click="Initialise_Click"/>
+                <Button Content="Scan" HorizontalAlignment="Stretch" Click="Scan_Click"/>
+                <Button Content="Destination" HorizontalAlignment="Stretch" Click="Destination_Click"/>
+                <TextBlock x:Name="ScannerDestination" Margin="0,10,0,0"/>
+            </StackPanel>
             <Image HorizontalAlignment="Stretch" x:Name="ScannerPreview"/>
         </StackPanel>
     </Grid>

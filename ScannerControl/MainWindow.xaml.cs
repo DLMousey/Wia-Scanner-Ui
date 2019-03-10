@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -9,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -35,14 +37,10 @@ namespace ScannerControl
             this.Imaging = new Imaging();
         }
 
-        private void Connect_Click(object sender, RoutedEventArgs e)
-        {
-            this.Imaging.ConnectToScanner();
-        }
-
         private void Scan_Click(object sender, RoutedEventArgs e)
         {
             ImageFile ImageFile = this.Imaging.ScanImage();
+            this.Imaging.ActiveDevice.ScannedImage = ImageFile;
 
             // Generate a filename in temporary storage and if, by some miracle,
             // there's a file already there by that name we'll delete it
@@ -63,6 +61,19 @@ namespace ScannerControl
 
             File.Delete(TempPath);
             this.ScannerPreview.Source = Img;
+        }
+
+        private void Destination_Click(object sender, RoutedEventArgs e)
+        {
+            FolderBrowserDialog Dialog = new FolderBrowserDialog();
+            DialogResult Result = Dialog.ShowDialog();
+
+            if (Result == System.Windows.Forms.DialogResult.OK)
+            {
+                this.Imaging.ActiveDevice.FilePath = Dialog.SelectedPath;
+            }
+
+            this.Imaging.SaveImage();
         }
     }
 }

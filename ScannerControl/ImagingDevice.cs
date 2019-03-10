@@ -15,9 +15,13 @@ namespace ScannerControl
 
         public String Port { get; set; }
 
+        public String FilePath { get; set; }
+
         public DeviceInfo DeviceInfo { get; set; } 
 
         public Device ConnectedDevice { get; set; }
+
+        public ImageFile ScannedImage { get; set; }
 
         public override string ToString()
         {

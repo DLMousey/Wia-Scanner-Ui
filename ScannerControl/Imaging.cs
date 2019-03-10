@@ -31,12 +31,8 @@ namespace ScannerControl
                 };
 
                 Console.WriteLine(this.ActiveDevice.ToString());
+                this.ActiveDevice.ConnectedDevice = this.ActiveDevice.DeviceInfo.Connect();
             }
-        }
-
-        public void ConnectToScanner()
-        {
-            this.ActiveDevice.ConnectedDevice = this.ActiveDevice.DeviceInfo.Connect();
         }
 
         public ImageFile ScanImage()
@@ -45,13 +41,17 @@ namespace ScannerControl
             ImageFile ScannedImage = (ImageFile)ScannerItem.Transfer(FormatID.wiaFormatJPEG);
 
             return ScannedImage;
-            //String FilePath = @"D:\Development\Dotnet\WPF\ScannedImages\scan.jpeg";
+        }
 
-            //if (File.Exists(FilePath))
-            //    File.Delete(FilePath);
+        public void SaveImage()
+        {
+            if (File.Exists(this.ActiveDevice.FilePath))
+            {
+                File.Delete(this.ActiveDevice.FilePath);
+            }
 
-            //ScannedImage.SaveFile(FilePath);
-            //ImageFile ScannedImage = (ImageFile) this.ActiveDevice.ConnectedDevice
+            this.ActiveDevice.FilePath += "/tmp-scan.jpeg";
+            this.ActiveDevice.ScannedImage.SaveFile(this.ActiveDevice.FilePath);
         }
     }
 }
