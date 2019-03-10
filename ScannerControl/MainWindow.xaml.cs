@@ -24,5 +24,10 @@ namespace ScannerControl
         {
             InitializeComponent();
         }
+
+        private void Initialise_Click(object sender, RoutedEventArgs e)
+        {
+            Imaging imaging = new Imaging();
+        }
     }
 }
