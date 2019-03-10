@@ -7,7 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Initialise" HorizontalAlignment="Left" Margin="142,110,0,0" VerticalAlignment="Top" Width="75" Click="Initialise_Click"/>
-
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Initialise" Width="75" Click="Initialise_Click"/>
+            <Button Content="Connect" Width="75" Click="Connect_Click"/>
+            <Button Content="Scan" Width="75" Click="Scan_Click"/>
+            <Image HorizontalAlignment="Stretch" x:Name="ScannerPreview"/>
+        </StackPanel>
     </Grid>
 </Window>

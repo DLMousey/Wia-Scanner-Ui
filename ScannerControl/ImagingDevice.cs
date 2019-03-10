@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WIA;
 
 namespace ScannerControl
 {
@@ -14,9 +15,17 @@ namespace ScannerControl
 
         public String Port { get; set; }
 
+        public DeviceInfo DeviceInfo { get; set; } 
+
+        public Device ConnectedDevice { get; set; }
+
         public override string ToString()
         {
-            return "Device Name : " + this.Name + " | Description : " + this.Description + " | Port : " + this.Port;
+            String output = "Device Name: " + this.Name + "\r\n";
+            output += "Description: " + this.Description + "\r\n";
+            output += "Port: " + this.Port + "\r\n";
+
+            return output;
         }
     }
 }
