@@ -70,10 +70,14 @@ namespace ScannerControl
 
             if (Result == System.Windows.Forms.DialogResult.OK)
             {
+                this.ScannerDestination.Text = Dialog.SelectedPath;
                 this.Imaging.ActiveDevice.FilePath = Dialog.SelectedPath;
             }
+        }
 
-            this.Imaging.SaveImage();
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            this.Imaging.SaveImage(this.DestinationFilename.Text.ToString());
         }
     }
 }

@@ -43,14 +43,14 @@ namespace ScannerControl
             return ScannedImage;
         }
 
-        public void SaveImage()
+        public void SaveImage(String Filename)
         {
             if (File.Exists(this.ActiveDevice.FilePath))
             {
                 File.Delete(this.ActiveDevice.FilePath);
             }
 
-            this.ActiveDevice.FilePath += "/tmp-scan.jpeg";
+            this.ActiveDevice.FilePath += "/" + Filename + ".jpeg";
             this.ActiveDevice.ScannedImage.SaveFile(this.ActiveDevice.FilePath);
         }
     }
