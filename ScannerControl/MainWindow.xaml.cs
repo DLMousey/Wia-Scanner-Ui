@@ -65,6 +65,10 @@ namespace ScannerControl
 
         private void Destination_Click(object sender, RoutedEventArgs e)
         {
+            // Open a Win32 folder browser dialog for the user, allowing
+            // them to specify where to save the scanned image to
+            // @TODO: find a way of inlining the filename into this dialog
+            // @TODO: store the selected file path, automatically set on next scan
             FolderBrowserDialog Dialog = new FolderBrowserDialog();
             DialogResult Result = Dialog.ShowDialog();
 
